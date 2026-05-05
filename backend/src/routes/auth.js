@@ -11,7 +11,7 @@ import { findUserByEmail, createUser, findUserById } from '../models/database.js
 const router = Router()
 
 // Clave secreta para firmar los tokens — CAMBIAR en producción
-const JWT_SECRET = process.env.JWT_SECRET || 'studymind-dev-secret-change-in-production'
+const JWT_SECRET = process.env.JWT_SECRET
 
 // Genera un token JWT con el ID del usuario, válido por 30 días
 const generarToken = (id) => jwt.sign({ userId: id }, JWT_SECRET, { expiresIn: '30d' })

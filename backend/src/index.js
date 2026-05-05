@@ -19,11 +19,11 @@ import evaluationsRoutes from './routes/evaluations.js'
 import { authenticateToken } from './middleware/auth.js'
 
 const app = express()
-const PUERTO = process.env.PORT || 3001
+const PUERTO = process.env.PORT
 
 // Permitir peticiones del frontend (configurable por variable de entorno)
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL,
   credentials: true,
 }))
 app.use(express.json())
