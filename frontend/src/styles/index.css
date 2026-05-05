@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Code', monospace;
+  --bg-base:     #f5f4fb;
+  --bg-surface:  #ffffff;
+  --bg-elevated: #eeecf9;
+  --border:      #dddaf4;
+  --border-mid:  #cbc7ec;
+  --text-primary:   #12102a;
+  --text-secondary: #45426b;
+  --text-muted:     #8e8aad;
+  --text-subtle:    #b8b5d4;
+  --accent:       #4f3ef4;
+  --accent-dim:   #6b5df6;
+  --accent-soft:  #eae8fe;
+  --accent-glow:  rgba(79,62,244,0.12);
+  --success:      #0d7a5f;
+  --success-soft: #e3f7f2;
+  --warning:      #b45309;
+  --warning-soft: #fef3c7;
+  --danger:       #b91c1c;
+  --danger-soft:  #fef2f2;
+  --info:         #1d4ed8;
+  --info-soft:    #eff6ff;
+  --sh-xs: 0 1px 2px rgba(0,0,0,0.06);
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --sh-md: 0 4px 8px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --sh-lg: 0 12px 24px rgba(0,0,0,0.09), 0 4px 8px rgba(0,0,0,0.05);
+  --sh-xl: 0 24px 48px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06);
+  --r-xs:  4px; --r-sm:  6px; --r-md:  10px;
+  --r-lg:  14px; --r-xl:  18px; --r-2xl: 24px;
+}
+
+.dark {
+  --bg-base:     #09071a;
+  --bg-surface:  #100e22;
+  --bg-elevated: #18152e;
+  --border:      #221f3d;
+  --border-mid:  #302c52;
+  --text-primary:   #eeeaf8;
+  --text-secondary: #9994c0;
+  --text-muted:     #5a567a;
+  --text-subtle:    #38354e;
+  --accent:       #7265f8;
+  --accent-dim:   #8e83f9;
+  --accent-soft:  #1a1738;
+  --accent-glow:  rgba(114,101,248,0.18);
+  --success:      #0ea47a;
+  --success-soft: #0a1f18;
+  --warning:      #d97706;
+  --warning-soft: #1c1000;
+  --danger:       #ef4444;
+  --danger-soft:  #1f0808;
+  --info:         #3b82f6;
+  --info-soft:    #081020;
+  --sh-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.45);
+  --sh-md: 0 4px 8px rgba(0,0,0,0.5);
+  --sh-lg: 0 12px 24px rgba(0,0,0,0.55);
+  --sh-xl: 0 24px 48px rgba(0,0,0,0.65);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-size: 15px;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.55;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-sm); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.985) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.appear   { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) both; }
+.appear-2 { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) 0.05s both; }
+.appear-3 { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
+.appear-4 { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) 0.15s both; }
+.appear-5 { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) 0.20s both; }
+
+.spinner {
+  display: inline-block; width: 15px; height: 15px;
+  border: 2px solid currentColor; border-top-color: transparent;
+  border-radius: 50%; opacity: 0.5; animation: spin 0.7s linear infinite;
+}
+
+.surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+}
+
+.divider { height: 1px; background: var(--border); border: none; }
+
+.page-title {
+  font-size: 1.45rem; font-weight: 700;
+  letter-spacing: -0.025em; color: var(--text-primary); line-height: 1.2;
+}
+.page-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 3px; font-weight: 400; }
+
+.label {
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted);
+}
+
+.mono { font-family: var(--font-mono); font-size: 0.8em; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: var(--r-xs);
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em;
+  border: 1px solid transparent; white-space: nowrap;
+}
+.chip-accent  { background: var(--accent-soft);  color: var(--accent);   }
+.chip-success { background: var(--success-soft); color: var(--success);  }
+.chip-warning { background: var(--warning-soft); color: var(--warning);  }
+.chip-danger  { background: var(--danger-soft);  color: var(--danger);   }
+.chip-muted   { background: var(--bg-elevated);  color: var(--text-muted); border-color: var(--border); }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.data-table th {
+  padding: 0.6rem 1rem; text-align: left;
+  font-size: 0.67rem; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--text-muted);
+  background: var(--bg-elevated); border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 0.8rem 1rem; border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr { transition: background 0.1s; }
+.data-table tbody tr:hover { background: var(--bg-elevated); }
+
+/* ── v3 layout fixes ─────────────────────────────────── */
+.fade-up   { animation: fadeUp 0.2s cubic-bezier(0.22,1,0.36,1) both; }
+.d1 { animation-delay: 0.04s; }
+.d2 { animation-delay: 0.08s; }
+.d3 { animation-delay: 0.12s; }
+.d4 { animation-delay: 0.16s; }
+.d5 { animation-delay: 0.20s; }
+.d6 { animation-delay: 0.24s; }
+
+.page-enter { animation: fadeUp 0.22s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* Full-height page content */
+main > div { min-height: calc(100vh - 56px); }
+
+/* Card shorthand (alias for surface) */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-sm);
+}
